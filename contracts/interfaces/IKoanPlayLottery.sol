@@ -1,14 +1,21 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.6.0;
+pragma solidity ^0.8.20;
 
-interface IPancakeSwapLottery {
+interface IKoanPlayLottery {
+
+    function operatorAddress() external view returns (address);
+    
     /**
      * @notice Buy tickets for the current lottery
      * @param _lotteryId: lotteryId
      * @param _ticketNumbers: array of ticket numbers between 1,000,000 and 1,999,999
      * @dev Callable by users
      */
-    function buyTickets(uint256 _lotteryId, uint32[] calldata _ticketNumbers) external;
+
+    function buyTickets(
+        uint256 _lotteryId,
+        uint32[] calldata _ticketNumbers
+    ) external;
 
     /**
      * @notice Claim a set of winning tickets for a lottery
@@ -36,7 +43,10 @@ interface IPancakeSwapLottery {
      * @param _autoInjection: reinjects funds into next lottery (vs. withdrawing all)
      * @dev Callable by operator
      */
-    function drawFinalNumberAndMakeLotteryClaimable(uint256 _lotteryId, bool _autoInjection) external;
+    function drawFinalNumberAndMakeLotteryClaimable(
+        uint256 _lotteryId,
+        bool _autoInjection
+    ) external;
 
     /**
      * @notice Inject funds
@@ -83,10 +93,5 @@ interface IPancakeSwapLottery {
     )
         external
         view
-        returns (
-            uint256[] memory,
-            uint32[] memory,
-            bool[] memory,
-            uint256
-        );
+        returns (uint256[] memory, uint32[] memory, bool[] memory, uint256);
 }
