@@ -6,7 +6,7 @@ import {VRFV2PlusClient} from "@chainlink/contracts/src/v0.8/vrf/dev/libraries/V
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import  "./interfaces/IKoanPlayLottery.sol";
+import  "../interfaces/IKoanPlayLottery.sol";
 
 contract RandomNumberGenerator is VRFConsumerBaseV2Plus {
 
